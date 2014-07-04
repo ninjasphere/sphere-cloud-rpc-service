@@ -1,5 +1,15 @@
 {
   "amqp": {
     "url": "amqp://guest:guest@localhost:5672"
+  },
+  "notificationService": {
+    "server": {
+      "hostname": "localhost",
+      "port": 5500
+    },
+    "signing": {
+      "sign": true,
+      "secret": "secret123"
+    }
   }
 }

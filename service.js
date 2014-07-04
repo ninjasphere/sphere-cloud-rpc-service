@@ -11,6 +11,9 @@ var service = usvc.microService({
   // bus connections
   amqp: usvc.facets.msg.amqp(),
 
+  // internal cloud RPC
+  notificationService: usvc.facets.rpc.jsonClient(),
+
   // userspace message routing (MQTT -> service facets)
   userspaceRPCHook: require('./lib/userspace_rpc')([ 'userNotificationRPC' ]),
 
