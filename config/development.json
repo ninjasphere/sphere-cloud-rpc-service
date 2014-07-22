@@ -11,5 +11,15 @@
       "sign": true,
       "secret": "secret123"
     }
+  },
+  "modelStoreService": {
+    "server": {
+      "hostname": "localhost",
+      "port": 5600
+    },
+    "signing": {
+      "sign": true,
+      "secret": "secret123"
+    }
   }
 }

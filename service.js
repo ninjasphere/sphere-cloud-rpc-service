@@ -13,10 +13,12 @@ var service = usvc.microService({
 
   // internal cloud RPC
   notificationService: usvc.facets.rpc.jsonClient(),
+  modelStoreService: usvc.facets.rpc.jsonClient(),
 
   // userspace message routing (MQTT -> service facets)
-  userspaceRPCHook: require('./lib/userspace_rpc')([ 'userNotificationRPC' ]),
+  userspaceRPCHook: require('./lib/userspace_rpc')([ 'userNotificationRPC', 'userModelStoreRPC' ]),
 
   // userspace RPC services
   userNotificationRPC: require('./lib/user_rpc/userNotificationRPC'),
+  userModelStoreRPC: require('./lib/user_rpc/userModelStoreRPC'),
 }).run();
