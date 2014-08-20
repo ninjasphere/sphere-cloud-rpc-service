@@ -21,5 +21,15 @@
       "sign": true,
       "secret": "secret123"
     }
+  },
+  "locationService": {
+    "server": {
+      "hostname": "localhost",
+      "port": 5900
+    },
+    "signing": {
+      "sign": true,
+      "secret": "secret123"
+    }
   }
 }
