@@ -23,4 +23,7 @@ var service = usvc.microService({
   userNotificationRPC: require('./lib/user_rpc/userNotificationRPC'),
   userModelStoreRPC: require('./lib/user_rpc/userModelStoreRPC'),
   userLocationRPC: require('./lib/user_rpc/userLocationRPC'),
+
+  // external rest api
+  frontendRest: usvc.facets.web.express(require('./lib/web'))
 }).run();
