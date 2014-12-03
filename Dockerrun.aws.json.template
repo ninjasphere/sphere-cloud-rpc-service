@@ -5,7 +5,7 @@
     "Key": "dockercfg"
   },
   "Image": {
-    "Name": "docker-registry.ninjablocks.co/ninjablocks/sphere-cloud-rpc-service:<TAG>",
+    "Name": "docker-registry.sphere.ninja/ninjablocks/sphere-rpc-service:<TAG>",
     "Update": "true"
   },
   "Ports": [
