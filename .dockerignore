@@ -1,0 +1,3 @@
+*.zip
+Dockerrun.aws.json
+Dockerrun.aws.json.template
