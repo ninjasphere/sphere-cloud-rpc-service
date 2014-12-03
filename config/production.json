@@ -2,13 +2,10 @@
   "amqp": {
     "url": "amqp://guest:guest@localhost:5672"
   },
-  "frontendRest": {
-    "port": 5500
-  },
   "notificationService": {
     "server": {
-      "hostname": "localhost",
-      "port": 5500
+      "hostname": "notification.sphere.ninja",
+      "port": 80
     },
     "signing": {
       "sign": true,
@@ -17,8 +14,8 @@
   },
   "modelStoreService": {
     "server": {
-      "hostname": "localhost",
-      "port": 5600
+      "hostname": "model.sphere.ninja",
+      "port": 80
     },
     "signing": {
       "sign": true,
@@ -27,8 +24,8 @@
   },
   "locationService": {
     "server": {
-      "hostname": "localhost",
-      "port": 5900
+      "hostname": "location.sphere.ninja",
+      "port": 80
     },
     "signing": {
       "sign": true,

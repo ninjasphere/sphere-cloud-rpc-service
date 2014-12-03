@@ -17,7 +17,7 @@ build:
 	docker ${DOCKER_ARGS} build -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}" .
 
 local:
-	docker ${DOCKER_ARGS} run -p 3333:3333 -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
+	docker ${DOCKER_ARGS} run -t -i --rm --link ninja-mysql:mysql --link ninja-rabbit:rabbitmq -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -p 3333:3333 -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
 
 deploy:
 	docker ${DOCKER_ARGS} push "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
@@ -33,4 +33,8 @@ deploy:
 	aws elasticbeanstalk update-environment --environment-name ${APP_ENV} \
 	    --version-label ${SHA1}
 
-.PHONY: all build local deploy
+clean:
+	rm *.zip || true
+	rm ${DOCKERRUN_FILE} || true
+
+.PHONY: all build local deploy clean
