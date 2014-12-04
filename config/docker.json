@@ -3,7 +3,7 @@
     "url": "amqp://guest:guest@rabbitmq:5672"
   },
   "frontendRest": {
-    "port": 5500
+    "port": 5300
   },
   "notificationService": {
     "server": {

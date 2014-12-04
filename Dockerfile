@@ -8,7 +8,7 @@ RUN apt-get install -yy --no-install-recommends git
 RUN npm install
 
 # replace this with your application's default port
-EXPOSE 5500
+EXPOSE 5300
 
 # replace this with your startup command
 CMD [ "node", "service.js" ]
