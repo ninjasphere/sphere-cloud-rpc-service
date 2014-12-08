@@ -7,7 +7,7 @@
   },
   "notificationService": {
     "server": {
-      "hostname": "notification.sphere.ninja",
+      "hostname": "notification.internal.sphere.ninja",
       "port": 80
     },
     "signing": {
@@ -17,7 +17,7 @@
   },
   "modelStoreService": {
     "server": {
-      "hostname": "model.sphere.ninja",
+      "hostname": "model.internal.sphere.ninja",
       "port": 80
     },
     "signing": {
@@ -27,7 +27,7 @@
   },
   "locationService": {
     "server": {
-      "hostname": "location.sphere.ninja",
+      "hostname": "location.internal.sphere.ninja",
       "port": 80
     },
     "signing": {
