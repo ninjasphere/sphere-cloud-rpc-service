@@ -10,7 +10,7 @@
   },
   "Ports": [
     {
-      "ContainerPort": "5300"
+      "ContainerPort": "5900"
     }
   ]
 }

@@ -24,6 +24,7 @@ var service = usvc.microService({
   userModelStoreRPC: require('./lib/user_rpc/userModelStoreRPC'),
   userLocationRPC: require('./lib/user_rpc/userLocationRPC'),
 
-  // external rest api
-  frontendRest: usvc.facets.web.express(require('./lib/web'))
+  // and the opposite direction: internal RPC -> amqp/mqtt
+  rpcService: usvc.facets.rpc.jsonServer(['mqttService']),
+  mqttService: require('./lib/rpc/mqtt')
 }).run();

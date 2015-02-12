@@ -2,8 +2,13 @@
   "amqp": {
     "url": "amqp://guest:guest@rabbitmq:5672"
   },
-  "frontendRest": {
-    "port": 5300
+  "rpcService": {
+    "host": "0.0.0.0",
+    "port": 5900,
+    "signing": {
+      "sign": true,
+      "secret": "secret123"
+    }
   },
   "notificationService": {
     "server": {

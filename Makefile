@@ -5,7 +5,7 @@ APP_NAME ?= sphere-rpc-service
 APP_ENV ?= sphere-rpc-prod
 CONFIG ?= configs/options.sphere.mine.js
 
-DOCKER_ARGS ?= -H dockerhost:5555
+#DOCKER_ARGS ?= -H dockerhost:5555
 SHA1 := $(shell git rev-parse --short HEAD | tr -d "\n")
 
 DOCKERRUN_FILE := Dockerrun.aws.json
@@ -16,8 +16,10 @@ all: build deploy
 build:
 	docker ${DOCKER_ARGS} build -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}" .
 
-local:
-	docker ${DOCKER_ARGS} run -t -i --rm --link ninja-mysql:mysql --link ninja-rabbit:rabbitmq -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -p 5100:5100 -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
+local: build run
+
+run:
+	docker ${DOCKER_ARGS} run -t -i --rm --link ninja-mysql:mysql --link ninja-rabbit:rabbitmq -e "DEBUG=*" -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -p 5900:5900 -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
 
 deploy:
 	docker ${DOCKER_ARGS} push "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
