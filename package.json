@@ -5,7 +5,7 @@
     "debug": "~0.8.1",
     "express": "^4.10.4",
     "joi": "^4.6.1",
-    "usvc": "ninjablocks/usvc",
+    "usvc": "^1.0.0",
     "when": "~3.1.0"
   },
   "devDependencies": {}
