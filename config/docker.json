@@ -1,6 +1,6 @@
 {
   "amqp": {
-    "url": "amqp://guest:guest@rabbitmq:5672"
+    "url": "amqp://guest:guest@rabbit:5672"
   },
   "rpcService": {
     "host": "0.0.0.0",
