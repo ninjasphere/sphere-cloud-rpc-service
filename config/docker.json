@@ -12,7 +12,7 @@
   },
   "notificationService": {
     "server": {
-      "hostname": "localhost",
+      "hostname": "notification",
       "port": 5500
     },
     "signing": {
@@ -22,7 +22,7 @@
   },
   "modelStoreService": {
     "server": {
-      "hostname": "localhost",
+      "hostname": "modelservice",
       "port": 5600
     },
     "signing": {
@@ -32,7 +32,7 @@
   },
   "locationService": {
     "server": {
-      "hostname": "localhost",
+      "hostname": "location",
       "port": 5900
     },
     "signing": {
