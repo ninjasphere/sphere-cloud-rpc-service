@@ -3,26 +3,26 @@ EB_BUCKET ?= ninjablocks-sphere-docker
 
 APP_NAME ?= sphere-rpc-service
 APP_ENV ?= sphere-rpc-prod
-CONFIG ?= configs/options.sphere.mine.js
 
-#DOCKER_ARGS ?= -H dockerhost:5555
 SHA1 := $(shell git rev-parse --short HEAD | tr -d "\n")
 
 DOCKERRUN_FILE := Dockerrun.aws.json
 APP_FILE := ${SHA1}.zip
 
-all: build deploy
+all: build push deploy
 
 build:
-	docker ${DOCKER_ARGS} build -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}" .
+	docker build -t "ninjasphere/${PROJECT}:${SHA1}" .
 
 local: build run
 
+push:
+	docker push "ninjasphere/${PROJECT}:${SHA1}"
+
 run:
-	docker ${DOCKER_ARGS} run -t -i --rm --link ninja-mysql:mysql --link ninja-rabbit:rabbitmq -e "DEBUG=*" -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -p 5900:5900 -t "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
+	docker run -t -i --rm --link ninja-mysql:mysql --link ninja-rabbit:rabbitmq -e "DEBUG=*" -e "USVC_CONFIG_ENV=docker" -e "NODE_ENV=development" -p 5900:5900 -t "ninjasphere/${PROJECT}:${SHA1}"
 
 deploy:
-	docker ${DOCKER_ARGS} push "docker-registry.sphere.ninja/ninjablocks/${PROJECT}:${SHA1}"
 	sed "s/<TAG>/${SHA1}/" < Dockerrun.aws.json.template > ${DOCKERRUN_FILE}
 	zip -r ${APP_FILE} ${DOCKERRUN_FILE} .ebextensions
 
@@ -39,4 +39,4 @@ clean:
 	rm *.zip || true
 	rm ${DOCKERRUN_FILE} || true
 
-.PHONY: all build local deploy clean
+.PHONY: all build push local deploy clean
